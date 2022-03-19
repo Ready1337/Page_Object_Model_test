@@ -12,3 +12,7 @@ class LoginPageLocators:
     REGISTRATION_EMAIL_ADDRESS_FIELD = (By.NAME, "registration-email")
     REGISTRATION_PASSWORD_FIELD_1 = (By.NAME, "registration-password1")
     REGISTRATION_PASSWORD_FIELD_2 = (By.NAME, "registration-password2")
+
+
+class ProductPageLocators:
+    ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
