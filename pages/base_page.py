@@ -14,6 +14,14 @@ class BasePage:
         self.browser = browser
         self.url = url
 
+    def go_to_login_page(self):
+        link = self.browser.find_element(*self.locators.LOGIN_LINK)
+        link.click()
+
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*self.locators.BASKET_LINK)
+        link.click()
+
     def open(self):
         self.browser.get(self.url)
 
@@ -51,15 +59,11 @@ class BasePage:
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text
-            print(f"Your code: {alert_text}")
+            print(f'Your code: {alert_text}')
             alert.accept()
         except NoAlertPresentException:
-            print("No second alert presented")
-
-    def go_to_login_page(self):
-        link = self.browser.find_element(*self.locators.LOGIN_LINK)
-        link.click()
+            print('No second alert presented')
 
     def should_be_login_link(self):
         assert self.is_element_present(self.locators.LOGIN_LINK), \
-            "Login link is not presented"
+            'Login link is not presented'
