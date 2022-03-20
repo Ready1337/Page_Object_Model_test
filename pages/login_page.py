@@ -26,3 +26,16 @@ class LoginPage(BasePage):
             'Register first password field is not presented'
         assert self.is_element_present(self.locators.REGISTRATION_PASSWORD_FIELD_2), \
             'Register second password field is not presented'
+
+    def fill_in_register_form(self, email, password):
+        email_field = self.browser.find_element(*self.locators.REGISTRATION_EMAIL_ADDRESS_FIELD)
+        email_field.send_keys(email)
+        password_field_1 = self.browser.find_element(*self.locators.REGISTRATION_PASSWORD_FIELD_1)
+        password_field_1.send_keys(password)
+        password_field_2 = self.browser.find_element(*self.locators.REGISTRATION_PASSWORD_FIELD_2)
+        password_field_2.send_keys(password)
+
+    def register_new_user(self, email, password):
+        self.fill_in_register_form(email, password)
+        register_button = self.browser.find_element(*self.locators.REGISTER_BUTTON)
+        register_button.click()
