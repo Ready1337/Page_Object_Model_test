@@ -16,3 +16,7 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
+    ALERT_PRODUCT_NAME = (By.XPATH, "//div[text()[contains(., 'has been added to your basket')]]/strong")
+    ALERT_PRODUCT_PRICE = (By.XPATH, "//p[text()[contains(., 'Your basket total is now')]]/strong")
+    PRODUCT_NAME = (By.XPATH, "//div[contains(@class, 'product_main')]/h1")
+    PRODUCT_PRICE = (By.XPATH, "//div[contains(@class, 'product_main')]/p[contains(@class, 'price_color')]")
