@@ -20,3 +20,4 @@ class ProductPageLocators:
     ALERT_PRODUCT_PRICE = (By.XPATH, "//p[text()[contains(., 'Your basket total is now')]]/strong")
     PRODUCT_NAME = (By.XPATH, "//div[contains(@class, 'product_main')]/h1")
     PRODUCT_PRICE = (By.XPATH, "//div[contains(@class, 'product_main')]/p[contains(@class, 'price_color')]")
+    SUCCESS_MESSAGE = (By.XPATH, "//div[contains(@id, 'messages')]/div")
