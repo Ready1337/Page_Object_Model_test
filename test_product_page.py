@@ -6,7 +6,7 @@ from pages.product_page import ProductPage
 @pytest.mark.parametrize(
     "url_suffix",
     [
-        f"?promo=offer{i}" for i in range(10)
+        pytest.param("?promo=offer7", marks=pytest.mark.xfail) if i == 7 else f"?promo=offer{i}" for i in range(10)
     ]
 )
 def test_guest_can_add_product_to_basket(browser, url_suffix):
