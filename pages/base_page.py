@@ -4,8 +4,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
 
+from pages.locators import BasePageLocators
+
 
 class BasePage:
+    locators = BasePageLocators()
+
     def __init__(self, browser, url):
         self.browser = browser
         self.url = url
@@ -22,7 +26,7 @@ class BasePage:
 
     def is_not_element_present(self, locator, timeout=4):
         try:
-            WebDriverWait(self.browser, timeout).\
+            WebDriverWait(self.browser, timeout). \
                 until(EC.presence_of_element_located(locator))
         except TimeoutException:
             return True
@@ -31,7 +35,7 @@ class BasePage:
 
     def is_disappeared(self, locator, timeout=4):
         try:
-            WebDriverWait(self.browser, timeout, 1, TimeoutException).\
+            WebDriverWait(self.browser, timeout, 1, TimeoutException). \
                 until_not(EC.presence_of_element_located(locator))
         except TimeoutException:
             return False
@@ -51,3 +55,11 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def go_to_login_page(self):
+        link = self.browser.find_element(*self.locators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(self.locators.LOGIN_LINK), \
+            "Login link is not presented"
